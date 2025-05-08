@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Vk.com Statistics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        .activities th, .activities td {
+            background-color: #ff69b4; /* Розовый */
+        }
+        .ages th, .ages td {
+            background-color: #2ecc71; /* Зелёный */
+        }
+        .cities th, .cities td {
+            background-color: #ff69b4; /* Розовый */
+        }
+    </style>
+</head>
+<body>
+    <h1>Vk.com Statistics</h1>
+
+    {% if stats %}
+        <h2>Activities</h2>
+        <table class="activities">
+            <tr>
+                <th>Likes</th>
+                <td>{{ stats[0].likes }}</td>
+            </tr>
+            <tr>
+                <th>Comments</th>
+                <td>{{ stats[0].comments }}</td>
+            </tr>
+            <tr>
+                <th>Subscribed</th>
+                <td>{{ stats[0].subscribed }}</td>
+            </tr>
+        </table>
+
+        <h2>Ages</h2>
+        <table class="ages">
+            {% for age_group, count in stats[0].age_groups.items() %}
+                <tr>
+                    <td>{{ age_group }}</td>
+                    <td>{{ count }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <h2>Cities</h2>
+        <table class="cities">
+            <tr>
+                <td>{{ stats[0].cities or 'Не указано' }}</td>
+            </tr>
+        </table>
+    {% else %}
+        <p>Нет данных по статистике.</p>
+    {% endif %}
+</body>
+</html>
