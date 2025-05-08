@@ -4,9 +4,9 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-LOGIN = '89005727070'
-PASSWORD = 'PoWeR07042007$'
-GROUP_ID_DEFAULT = 230405791
+LOGIN = 'LOGIN'
+PASSWORD = 'PASSWORD'
+GROUP_ID_DEFAULT = 000000000
 
 vk_session = None
 vk = None
